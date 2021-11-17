@@ -144,7 +144,11 @@
 
 // function callAPI(text) {
 //   fetch(url + text)
-//     .then((response) => response.json())
+//     .then((response) => {
+//       console.log(response);
+//       console.log(response.status);
+//       return response.json();
+//     })
 //     .then((data) => console.log(data));
 // }
 
@@ -173,3 +177,28 @@
 //   }
 // }
 // ageChecker(obj1, obj2);
+
+// Create a CLI app which would detect fake news. This app will take news as input and then source.
+
+// If source is Facebook or whatsapp then it will output user saying, "Don't believe things on FB and Whatsapp". Can you extend this to include telegram as well?
+
+let fakeSourceList = [
+  "fb",
+  "facebook",
+  "whatsapp",
+  "telegram",
+  "insta",
+  "instagram",
+];
+
+let news = prompt("News item?");
+let source = prompt("Source?");
+
+let isSourceFake = fakeSourceList.includes(source.toLowerCase());
+
+let realNewsMessage = `${news} is real`;
+let fakeNewsMessage = `${news} is fake news from ${source}`;
+
+let analysis = isSourceFake ? fakeNewsMessage : realNewsMessage;
+
+alert(analysis);
